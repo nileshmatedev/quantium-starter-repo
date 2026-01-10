@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=d:\DATA_PC\Projects\quantium_simulation_project\.venv"
+set "VIRTUAL_ENV=d:\DATA_PC\Projects\quantium_simulation_project\quantium-starter-repo\.venv"
 
 if not defined PROMPT set PROMPT=$P$G
 
