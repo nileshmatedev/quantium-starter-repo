@@ -1,14 +1,14 @@
 import dash
 from dash import dcc, html
 import plotly.graph_objs as go
-import pandas as pd
+import pandas as pd 
 import os
 
 data_path = os.path.join(os.path.dirname(__file__), 'pink_morsels_sales.csv')
 df = pd.read_csv(data_path)
 
-df['Date'] = pd.to_datetime(df['Date'])
-df = df.sort_values('Date')
+df['date'] = pd.to_datetime(df['Date'])
+df = df.sort_values('date')
 
 df_grouped = df.groupby('Date')['Sales'].sum().reset_index()
 
@@ -16,18 +16,18 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H1(
-        'Pink Morsels Sales Visualizer',
+        'pink Morsels Sales Vosualizer',
         style={
-            'textAlign': 'center',
+            'textAlign':'center',
             'color': '#FF1493',
             'marginTop': '20px',
             'marginBottom': '30px',
             'fontFamily': 'Arial, sans-serif'
+
         }
     ),
-    
     html.H3(
-        'Sales Analysis: Before vs After Price Increase (Jan 15, 2021)',
+        'Sales Analyisis: Before vs After Price Increase (Jan 15, 2021)',
         style={
             'textAlign': 'center',
             'color': '#555',
@@ -35,7 +35,6 @@ app.layout = html.Div([
             'fontFamily': 'Arial, sans-serif'
         }
     ),
-    
     dcc.Graph(
         id='sales-chart',
         figure={
@@ -45,13 +44,13 @@ app.layout = html.Div([
                     y=df_grouped['Sales'],
                     mode='lines',
                     name='Total Sales',
-                    line=dict(color='#FF1493', width=2)
+                    line=dict(color='#FF1493',width=2)
                 )
             ],
             'layout': go.Layout(
-                title='Pink Morsels Daily Sales Over Time',
-                xaxis={'title': 'Date'},
-                yaxis={'title': 'Sales ($)'},
+                title='Pink Morsels Daily Sales Over time',
+                xaxis={'title': 'date'},
+                yaxis={'title': 'Sales($)'},
                 hovermode='closest',
                 height=600,
                 shapes=[
@@ -65,13 +64,13 @@ app.layout = html.Div([
                         line=dict(
                             color='red',
                             width=2,
-                            dash='dash'
+                            dash='dash',
                         )
                     )
                 ],
-                annotations=[
+                annotations = [
                     dict(
-                        x='2021-01-15',
+                        x='2021-01-155',
                         y=1,
                         yref='paper',
                         text='Price Increase',
@@ -79,13 +78,16 @@ app.layout = html.Div([
                         arrowhead=2,
                         arrowcolor='red',
                         ax=0,
-                        ay=-40
+                        ay=-40,
                     )
                 ]
             )
+        
         }
     )
 ])
 
 if __name__ == '__main__':
     app.run(debug=True, port=8050)
+
+
