@@ -44,7 +44,8 @@ app.layout = html.Div([
                     y=df_grouped['Sales'],
                     mode='lines',
                     name='Total Sales',
-                    line=dict(color='#FF1493',width=2)
+                    line=dict(color="#C90707",width=2)
+                    
                 )
             ],
             'layout': go.Layout(
